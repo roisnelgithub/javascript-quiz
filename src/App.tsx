@@ -1,8 +1,10 @@
 import { Container } from "@mui/material";
 import HeaderQuiz from "./components/header/HeaderQuiz";
 import StartScreen from "./screens/start-screen/StartScreen";
+import { useQuestionsStore } from "./store/questions";
 
 function App() {
+  const questions = useQuestionsStore((store) => store.questions);
   return (
     <>
       <main>
@@ -17,7 +19,7 @@ function App() {
           }}
         >
           <HeaderQuiz />
-          <StartScreen />
+          {questions.length > 0 ? "Juego" : <StartScreen />}
         </Container>
       </main>
     </>
