@@ -1,27 +1,28 @@
 import { Container } from "@mui/material";
+import { useQuestionsStore } from "./store/questions";
 import HeaderQuiz from "./components/header/HeaderQuiz";
 import StartScreen from "./screens/start-screen/StartScreen";
-import { useQuestionsStore } from "./store/questions";
+import GameScreen from "./screens/game-screen/GameScreen";
 
 function App() {
   const questions = useQuestionsStore((store) => store.questions);
   return (
     <>
-      <main>
-        <Container
-          maxWidth="xs"
-          sx={{
-            display: "flex",
-            height: "100vh",
-            flexDirection: "column",
-            placeContent: "center",
-            placeItems: "center",
-          }}
-        >
+      <Container
+        maxWidth="xs"
+        sx={{
+          display: "flex",
+          height: "100vh",
+          flexDirection: "column",
+          placeContent: "center",
+          placeItems: "center",
+        }}
+      >
+        <header>
           <HeaderQuiz />
-          {questions.length > 0 ? "Juego" : <StartScreen />}
-        </Container>
-      </main>
+        </header>
+        <main>{questions.length > 0 ? <GameScreen /> : <StartScreen />}</main>
+      </Container>
     </>
   );
 }
