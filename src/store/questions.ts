@@ -12,6 +12,8 @@ interface State {
   nextQuestion: () => void;
   previousQuestion: () => void;
   resetGame: () => void;
+  amountQuestions: number;
+  changeAmountQuestion: (amount: number) => void;
 }
 
 export const useQuestionsStore = create<State>()(
@@ -20,6 +22,7 @@ export const useQuestionsStore = create<State>()(
       return {
         questions: [],
         currentQuestion: 0,
+        amountQuestions: 5,
 
         getQuestions: async (limit: number) => {
           const data = await getQuestions();
@@ -61,6 +64,9 @@ export const useQuestionsStore = create<State>()(
         },
         resetGame: () => {
           set({ currentQuestion: 0, questions: [] });
+        },
+        changeAmountQuestion: (amount: number) => {
+          set({ amountQuestions: amount });
         },
       };
     },
