@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "question": "¿Cuál es la salida de este código?",
+        "code": "console.log(typeof NaN)",
+        "answers": [
+            "undefined",
+            "NaN",
+            "string",
+            "number"
+        ],
+        "correctAnswer": 3
+    },
+    {
+        "id": 2,
+        "question": "¿Cuál es el resultado de la siguiente expresión?",
+        "code": "3 + 2 + '7'",
+        "answers": [
+            "12",
+            "327",
+            "57",
+            "NaN"
+        ],
+        "correctAnswer": 2
+    },
+    {
+        "id": 3,
+        "question": "¿Cuál es la salida del código?",
+        "code": "let a = 10; \nlet b = () => {\n console.log(this.a);\n}\nn();",
+        "answers": [
+            "undefined",
+            "null",
+            "10",
+            "ReferenceError"
+        ],
+        "correctAnswer": 0
+    }
+]
