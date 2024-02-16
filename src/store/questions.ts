@@ -14,6 +14,7 @@ interface State {
   resetGame: () => void;
   amountQuestions: number;
   changeAmountQuestion: (amount: number) => void;
+  isLoading: boolean;
 }
 
 export const useQuestionsStore = create<State>()(
@@ -23,13 +24,18 @@ export const useQuestionsStore = create<State>()(
         questions: [],
         currentQuestion: 0,
         amountQuestions: 5,
+        isLoading: false,
 
         getQuestions: async (limit: number) => {
-          const data = await getQuestions();
-          const questions = data
-            .sort(() => Math.random() - 0.5)
-            .slice(0, limit);
-          set({ questions });
+          set({ isLoading: true });
+          setTimeout(async () => {
+            const data = await getQuestions();
+            const questions = data
+              .sort(() => Math.random() - 0.5)
+              .slice(0, limit);
+
+            set({ questions, isLoading: false });
+          }, 2000);
         },
         selectAnswer(questionId, answerIndex) {
           const { questions } = get();

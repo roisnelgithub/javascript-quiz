@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
@@ -17,6 +18,7 @@ import SickIcon from "@mui/icons-material/Sick";
 const StartScreen = () => {
   const getQuestions = useQuestionsStore((state) => state.getQuestions);
   const amountQuestions = useQuestionsStore((state) => state.amountQuestions);
+  const isLoading = useQuestionsStore((state) => state.isLoading);
   const changeAmountQuestion = useQuestionsStore(
     (state) => state.changeAmountQuestion
   );
@@ -47,6 +49,7 @@ const StartScreen = () => {
           fullWidth
           size="small"
           onChange={handleSelectAmountQuestion}
+          disabled={isLoading}
         >
           <MenuItem value={5}>
             <Stack direction="row" spacing={1}>
@@ -71,10 +74,12 @@ const StartScreen = () => {
 
       <Button
         variant="contained"
-        sx={{ maxWidth: "120px" }}
+        sx={{ maxWidth: "150px" }}
         onClick={handleStart}
+        disabled={isLoading}
+        endIcon={isLoading && <CircularProgress size={24} color="inherit" />}
       >
-        ¡Comenzar!
+        {isLoading ? "Cargando..." : "¡Comenzar!"}
       </Button>
     </Stack>
   );

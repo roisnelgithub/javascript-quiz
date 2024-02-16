@@ -9,6 +9,7 @@ const GameScreen = () => {
   const currentQuestion = useQuestionsStore((store) => store.currentQuestion);
   const resetGame = useQuestionsStore((store) => store.resetGame);
   const question = questions[currentQuestion];
+
   return (
     <Box
       sx={{
@@ -40,7 +41,7 @@ const GameScreen = () => {
             size="small"
             sx={{ maxWidth: "120px", textTransform: "none" }}
           >
-            Reset game
+            Reiniciar juego
           </Button>
         </Stack>
       </Stack>
