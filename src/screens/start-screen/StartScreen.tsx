@@ -32,18 +32,18 @@ const StartScreen = () => {
     <Stack
       direction="column"
       alignItems={"center"}
-      spacing={2}
+      spacing={3}
       sx={{ width: { xs: "230px", sm: "300px" } }}
     >
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select" size="normal">
-          Amount of questions
+          Cantidad de preguntas
         </InputLabel>
         <Select
           labelId="demo-simple-select"
           id="demo-simple-select"
           value={amountQuestions}
-          label="Amount of questions"
+          label="Cantidad de preguntas"
           fullWidth
           size="small"
           onChange={handleSelectAmountQuestion}
@@ -51,19 +51,19 @@ const StartScreen = () => {
           <MenuItem value={5}>
             <Stack direction="row" spacing={1}>
               <SentimentVerySatisfiedIcon />
-              <Typography>Standard (5)</Typography>
+              <Typography>Fácil (5)</Typography>
             </Stack>
           </MenuItem>
           <MenuItem value={10}>
             <Stack direction="row" spacing={1}>
               <SentimentNeutralIcon />
-              <Typography>Moderate (10)</Typography>
+              <Typography>Moderado (10)</Typography>
             </Stack>
           </MenuItem>
           <MenuItem value={15}>
             <Stack direction="row" spacing={1}>
               <SickIcon />
-              <Typography>Hard (15)</Typography>
+              <Typography>Difícil (15)</Typography>
             </Stack>
           </MenuItem>
         </Select>

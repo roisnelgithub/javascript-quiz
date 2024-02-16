@@ -1,6 +1,5 @@
 import {
   Card,
-  CardContent,
   List,
   ListItem,
   ListItemButton,
@@ -35,38 +34,33 @@ const Question = ({ question }: { question: Question }) => {
   };
 
   return (
-    <Card variant="outlined">
-      <CardContent>
-        <Stack spacing={1}>
-          <Typography fontSize={"1.2rem"}>{question.question}</Typography>
-          <Card variant="outlined" sx={{ p: "8px" }}>
-            <SyntaxHighlighter language="javascript" style={docco}>
-              {question.code}
-            </SyntaxHighlighter>
-          </Card>
-          <List disablePadding>
-            <Card variant="outlined">
-              {question.answers.map((answer, index) => (
-                <ListItem key={index} disablePadding>
-                  <ListItemButton
-                    divider
-                    onClick={handleSelectedAnswer(index)}
-                    disabled={question.userSelectedAnswer != null}
-                    sx={{
-                      backgroundColor: getBackgroundColor(question, index),
-                    }}
-                  >
-                    <ListItemText sx={{ textAlign: "center" }}>
-                      {answer}
-                    </ListItemText>
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </Card>
-          </List>
-        </Stack>
-      </CardContent>
-    </Card>
+    <Stack spacing={2}>
+      <Typography fontSize={"1.2rem"}>{question.question}</Typography>
+
+      <SyntaxHighlighter language="javascript" style={docco}>
+        {question.code}
+      </SyntaxHighlighter>
+      <List disablePadding>
+        <Card variant="outlined">
+          {question.answers.map((answer, index) => (
+            <ListItem key={index} disablePadding>
+              <ListItemButton
+                divider
+                onClick={handleSelectedAnswer(index)}
+                disabled={question.userSelectedAnswer != null}
+                sx={{
+                  backgroundColor: getBackgroundColor(question, index),
+                }}
+              >
+                <ListItemText sx={{ textAlign: "center" }}>
+                  {answer}
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </Card>
+      </List>
+    </Stack>
   );
 };
 

@@ -1,28 +1,19 @@
-import { Container, Stack } from "@mui/material";
+import { Card, Container, Stack } from "@mui/material";
 import { useQuestionsStore } from "./store/questions";
-import HeaderQuiz from "./components/header/HeaderQuiz";
 import StartScreen from "./screens/start-screen/StartScreen";
 import GameScreen from "./screens/game-screen/GameScreen";
+import HeaderQuiz from "./components/header/HeaderQuiz";
 
 function App() {
   const questions = useQuestionsStore((store) => store.questions);
   return (
-    <Container
-      maxWidth="xs"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        placeContent: "center",
-        placeItems: "center",
-        height: "100vh",
-      }}
-    >
-      <Stack direction="column" spacing={3}>
-        <header>
+    <Container maxWidth="xs" sx={{ mt: "2rem" }}>
+      <Card variant="outlined" sx={{ p: { xs: "0.6rem", sm: "1rem" } }}>
+        <Stack direction="column" spacing={2} alignItems={"center"}>
           <HeaderQuiz />
-        </header>
-        <main>{questions.length > 0 ? <GameScreen /> : <StartScreen />}</main>
-      </Stack>
+          {questions.length > 0 ? <GameScreen /> : <StartScreen />}
+        </Stack>
+      </Card>
     </Container>
   );
 }

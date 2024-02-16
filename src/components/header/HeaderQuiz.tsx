@@ -1,17 +1,12 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, useMediaQuery } from "@mui/material";
 import JavaScriptLogo from "../javascript-logo/JavaScriptLogo";
 
 const HeaderQuiz = () => {
+  const matches = useMediaQuery("(min-width:380px)");
   return (
-    <Stack
-      direction="row"
-      spacing={1}
-      justifyContent={"center"}
-      alignContent={"center"}
-      p={1}
-    >
+    <Stack direction="row" spacing={1} p={1}>
       <JavaScriptLogo width={32} height={32} />
-      <Typography fontSize={{ xs: "1.5rem", sm: "1.8rem" }}>
+      <Typography fontSize={matches ? "1.8rem" : "1.7rem"}>
         Java Script Quiz
       </Typography>
     </Stack>
