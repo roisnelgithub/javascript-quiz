@@ -7,7 +7,7 @@ const HeaderQuiz = () => {
     <Stack direction="row" spacing={1} p={1}>
       <JavaScriptLogo width={32} height={32} />
       <Typography fontSize={matches ? "1.8rem" : "1.7rem"}>
-        Java Script Quiz
+        Javascript Quiz
       </Typography>
     </Stack>
   );

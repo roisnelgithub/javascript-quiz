@@ -3,12 +3,26 @@ import { useQuestionsStore } from "../../store/questions";
 import Question from "./components/Question";
 import Navigation from "./components/Navigation";
 import Summary from "./components/Summary";
+import { useQuestionData } from "../../hooks/useQuestionData";
+import { useEffect, useState } from "react";
+import { EndQuiz } from "./components/end-quiz";
 
 const GameScreen = () => {
   const questions = useQuestionsStore((store) => store.questions);
   const currentQuestion = useQuestionsStore((store) => store.currentQuestion);
   const resetGame = useQuestionsStore((store) => store.resetGame);
   const question = questions[currentQuestion];
+
+  const [isOpenEndGameModal, setIsOpenEndGameModal] = useState(false);
+  const handleOpen = () => setIsOpenEndGameModal(true);
+  const handleClose = () => setIsOpenEndGameModal(false);
+
+  const { unanswered } = useQuestionData();
+  useEffect(() => {
+    if (unanswered === 0) {
+      handleOpen();
+    }
+  }, [unanswered]);
 
   return (
     <Box
@@ -41,10 +55,11 @@ const GameScreen = () => {
             size="small"
             sx={{ maxWidth: "120px", textTransform: "none" }}
           >
-            Reiniciar juego
+            Reiniciar quiz
           </Button>
         </Stack>
       </Stack>
+      <EndQuiz isOpenModal={isOpenEndGameModal} onClose={handleClose} />
     </Box>
   );
 };
